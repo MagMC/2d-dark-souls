@@ -11,6 +11,17 @@ load_path = "res://.godot/imported/layer 2 midground.png-afbd66d89b9fef82e871e02
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5t6pf"]
 load_path = "res://.godot/imported/layer 3 foreground.png-50abf5e75341ac6ca6a51f93cf53a3db.ctex"
 
+[sub_resource type="Gradient" id="Gradient_5t6pf"]
+offsets = PackedFloat32Array(0, 0.7680723)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_quu3v"]
+gradient = SubResource("Gradient_5t6pf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_quu3v"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n015i"]
 size = Vector2(815.5, 20)
 
@@ -65,6 +76,15 @@ texture = SubResource("CompressedTexture2D_rlgmq")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Foreground" unique_id=1708252658]
 texture = SubResource("CompressedTexture2D_5t6pf")
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/Foreground" unique_id=399938577]
+position = Vector2(-527, 14.999999)
+scale = Vector2(1.7929689, 1.7968749)
+color = Color(0.92585325, 0.9936878, 7.70092e-07, 1)
+texture = SubResource("GradientTexture2D_quu3v")
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground" unique_id=1913988476]
+texture = SubResource("DrawableTexture2D_quu3v")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=699734420]
 position = Vector2(77, 0)
