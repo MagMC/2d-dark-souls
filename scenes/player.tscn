@@ -131,19 +131,19 @@ region = Rect2(540, 90, 90, 90)
 [sub_resource type="SpriteFrames" id="SpriteFrames_quu3v"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_f1ej7")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_oprun")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_a8ls1")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_qfm1y")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_fulsm")
 }],
 "loop": 0,
@@ -151,10 +151,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4r5pv")
 }, {
-"duration": 2.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_60mlk")
 }, {
 "duration": 1.0,
@@ -268,6 +268,8 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_quu3v")
 animation = &"heavy attack"
 autoplay = "rest"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446563397]
 position = Vector2(0, -23)
