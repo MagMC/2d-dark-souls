@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://dmc1ady05k340"]
 
 [ext_resource type="PackedScene" uid="uid://cixo8bcjdx6qt" path="res://scenes/player.tscn" id="1_5t6pf"]
-[ext_resource type="Texture2D" uid="uid://hsd8e1p4auyr" path="res://assets/backgrounds/Layer 1 far distance.png" id="1_d0kxm"]
-[ext_resource type="Texture2D" uid="uid://b8n6jsur4la4i" path="res://assets/backgrounds/layer 2 midground.png" id="2_fw0sb"]
-[ext_resource type="Texture2D" uid="uid://p62maup5ftyl" path="res://assets/backgrounds/layer 3 foreground.png" id="3_xb6bm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_80dao"]
+load_path = "res://.godot/imported/Layer 1 far distance.png-c82931f0be943ad1cfb4636a2f7f52ff.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rlgmq"]
+load_path = "res://.godot/imported/layer 2 midground.png-afbd66d89b9fef82e871e02fa7af36e8.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5t6pf"]
+load_path = "res://.godot/imported/layer 3 foreground.png-50abf5e75341ac6ca6a51f93cf53a3db.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n015i"]
 size = Vector2(815.5, 20)
@@ -40,23 +46,25 @@ size = Vector2(218.375, 3)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1310061587]
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground" unique_id=517462849]
-motion_scale = Vector2(0.1, 1)
-motion_mirroring = Vector2(1440, 0)
+motion_scale = Vector2(0.2, 1)
+motion_offset = Vector2(200, 0)
+motion_mirroring = Vector2(1672, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background" unique_id=1826769187]
-texture = ExtResource("1_d0kxm")
+texture = SubResource("CompressedTexture2D_80dao")
 
 [node name="Midground" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1720177004]
-motion_scale = Vector2(0.5, 1)
-motion_mirroring = Vector2(1440, 0)
+motion_scale = Vector2(0.4, 1)
+motion_offset = Vector2(100, 0)
+motion_mirroring = Vector2(1672, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Midground" unique_id=726641773]
-texture = ExtResource("2_fw0sb")
+texture = SubResource("CompressedTexture2D_rlgmq")
 
 [node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1865607466]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Foreground" unique_id=1708252658]
-texture = ExtResource("3_xb6bm")
+texture = SubResource("CompressedTexture2D_5t6pf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=699734420]
 position = Vector2(77, 0)
@@ -86,7 +94,7 @@ position = Vector2(-633, 51)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1822293328]
 position = Vector2(1, -14)
-offset = Vector2(0, -150)
+offset = Vector2(0, -140)
 process_callback = 0
 limit_left = -836
 limit_right = 824
