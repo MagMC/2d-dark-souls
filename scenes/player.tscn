@@ -146,7 +146,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fulsm")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"basic attack",
 "speed": 5.0
 }, {
@@ -166,7 +166,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4ni07")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"heavy attack",
 "speed": 5.0
 }, {
@@ -268,7 +268,6 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_quu3v")
 animation = &"heavy attack"
 autoplay = "rest"
-frame_progress = 0.8428595
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446563397]
 position = Vector2(0, -23)
