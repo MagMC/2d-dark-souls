@@ -43,11 +43,11 @@ func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_axis("ui_left", "ui_right")
 
-	# Start attacks before processing movement so they stop walking immediately.
+	# Held attacks repeat after the current animation finishes.
 	if not IS_ATTACKING:
-		if Input.is_action_just_pressed("Baic attack"):
+		if Input.is_action_pressed("Baic attack"):
 			_start_attack("basic attack", basic_attack_duration, direction)
-		elif Input.is_action_just_pressed("Heavy attack"):
+		elif Input.is_action_pressed("Heavy attack"):
 			_start_attack("heavy attack", heavy_attack_duration, direction)
 
 	# Preserve airborne momentum and ignore movement input during attacks.
@@ -59,8 +59,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0.0
 		return
 
-	# Accept jumps just before landing or just after leaving an edge.
-	if (jump_buffer_left > 0.0 or Input.is_action_just_pressed("ui_accept")) and (is_on_floor() or coyote_time_left > 0.0):
+	# Holding jump repeats on landing; quick taps still use the input buffer.
+	if (jump_buffer_left > 0.0 or Input.is_action_pressed("ui_accept")) and (is_on_floor() or coyote_time_left > 0.0):
 		velocity.y = jump_velocity
 		jump_buffer_left = 0.0
 		coyote_time_left = 0.0
