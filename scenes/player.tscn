@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g1c8shn47i3" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ci3sxdfuovx7a" path="res://assets/sprites/Knight/knight-Sheet_greyfx.png" id="1_lj8jo"]
+[ext_resource type="Texture2D" uid="uid://qt7th0crc87o" path="res://assets/sprites/Knight/knight-rest_sheet.png" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2brh"]
 atlas = ExtResource("1_lj8jo")
@@ -26,6 +27,22 @@ region = Rect2(360, 0, 90, 90)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t53lx"]
 atlas = ExtResource("1_lj8jo")
 region = Rect2(450, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(0, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(90, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(0, 90, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(90, 90, 90, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_lj8jo")
@@ -86,6 +103,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}],
+"loop": 1,
+"name": &"rest",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g2els")
 }, {
 "duration": 1.0,
@@ -126,9 +160,9 @@ script = ExtResource("1_g2els")
 position = Vector2(0, -25)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_quu3v")
-animation = &"walk"
-autoplay = "idle"
-frame_progress = 0.3326916
+animation = &"rest"
+autoplay = "rest"
+frame_progress = 0.735623
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446563397]
 position = Vector2(0, -23)
