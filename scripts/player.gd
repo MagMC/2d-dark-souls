@@ -32,10 +32,13 @@ func _physics_process(delta: float) -> void:
 			time_without_movement = 0.0
 			animated_sprite.play("heavy attack")
 
-	# Airborne attacks keep movement; grounded attacks lock it until finished.
-	if IS_ATTACKING and is_on_floor():
-		velocity.x = 0.0
+	# Preserve airborne momentum and ignore movement input during attacks.
+	if IS_ATTACKING:
+		if is_on_floor():
+			velocity.x = 0.0
 		move_and_slide()
+		if is_on_floor():
+			velocity.x = 0.0
 		return
 
 	# Handle jump.
@@ -49,18 +52,14 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 		time_without_movement = 0.0
-		if not IS_ATTACKING:
-			animated_sprite.flip_h = direction < 0
-			animated_sprite.play("walk")
+		animated_sprite.flip_h = direction < 0
+		animated_sprite.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		time_without_movement = minf(time_without_movement + delta, REST_DELAY)
-		if not IS_ATTACKING:
-			animated_sprite.play("rest" if time_without_movement >= REST_DELAY else "idle")
+		animated_sprite.play("rest" if time_without_movement >= REST_DELAY else "idle")
 
 	move_and_slide()
-	if IS_ATTACKING and is_on_floor():
-		velocity.x = 0.0
 
 
 func _on_animation_finished() -> void:
