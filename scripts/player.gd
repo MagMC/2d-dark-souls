@@ -21,6 +21,22 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# Start attacks before processing movement so they stop walking immediately.
+	if not IS_ATTACKING:
+		if Input.is_action_just_pressed("Baic attack"):
+			IS_ATTACKING = true
+			time_without_movement = 0.0
+			animated_sprite.play("basic attack")
+		elif Input.is_action_just_pressed("Heavy attack"):
+			IS_ATTACKING = true
+			time_without_movement = 0.0
+			animated_sprite.play("heavy attack")
+
+	if IS_ATTACKING:
+		velocity.x = 0.0
+		move_and_slide()
+		return
+
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -33,24 +49,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 		time_without_movement = 0.0
 		animated_sprite.flip_h = direction < 0
-		if not IS_ATTACKING:
-			animated_sprite.play("walk")
+		animated_sprite.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		time_without_movement = minf(time_without_movement + delta, REST_DELAY)
-		if not IS_ATTACKING:
-			animated_sprite.play("rest" if time_without_movement >= REST_DELAY else "idle")
-
-	# Let the current attack finish before starting another animation.
-	if not IS_ATTACKING:
-		if Input.is_action_just_pressed("Baic attack"):
-			IS_ATTACKING = true
-			time_without_movement = 0.0
-			animated_sprite.play("basic attack")
-		elif Input.is_action_just_pressed("Heavy attack"):
-			IS_ATTACKING = true
-			time_without_movement = 0.0
-			animated_sprite.play("heavy attack")
+		animated_sprite.play("rest" if time_without_movement >= REST_DELAY else "idle")
 
 	move_and_slide()
 
